@@ -2,7 +2,7 @@
 [x] yarn init (set up files)
 [x] yarn install (node modules)
 [x] yarn add express, helmet, morgan 
-[] yarn add nodemon --dev or -D (for deployment)
+[x] yarn add nodemon --dev or -D (for deployment)
 [x] yarn add dotenv
 [] yarn add knex sqlite3
 [] yarn add bcryptjs
