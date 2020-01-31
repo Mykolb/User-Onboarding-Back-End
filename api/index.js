@@ -7,6 +7,12 @@ require('dotenv').config();
 //import routers
 const student_info_router = require('../routes/student_info/student_info_router')
 
+
+const port = process.env.PORT || 5000
+server.listen(port, () => {
+    console.log(`*** Server is listening on port ${port}***\n`)
+})
+
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true})
 
