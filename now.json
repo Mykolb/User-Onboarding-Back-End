@@ -1,34 +1,6 @@
 {
     "name": "useronboarding-back-end",
     "version": 2,
-    "builds": [{ "src": "server.js", "use": "@now/node-server" }],
-    "routes": [
-        {
-          "src": "/",
-          "dest": "/server.js",
-          "methods": ["GET"]
-        },
-        {
-          "src": "/:id",
-          "dest": "/server.js",
-          "methods": ["GET"]
-        },
-        {
-          "src": "/",
-          "dest": "/server.js",
-          "methods": ["POST"]
-        },
-        {
-            "src": "/:id",
-            "dest": "/server.js",
-            "methods": ["PUT"]
-          },
-          {
-            "src": "/:id",
-            "dest": "/server.js",
-            "methods": ["DELETE"]
-          }
-      ],
     "env": {
       "ATLAS_URI": "ATLAS_URI"
     }
