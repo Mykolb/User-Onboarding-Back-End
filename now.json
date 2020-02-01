@@ -1,7 +1,0 @@
-{
-    "name": "useronboarding-back-end",
-    "version": 2,
-    "env": {
-      "ATLAS_URI": "ATLAS_URI"
-    }
-  }
