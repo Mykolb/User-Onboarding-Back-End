@@ -6,6 +6,7 @@ const studentInfoSchema = new Schema({
         _id: {
         type: Number,
         seq: Number,
+        unique: true,
         // default: 1
     },
     name: {
