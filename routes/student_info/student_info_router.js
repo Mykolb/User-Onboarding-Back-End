@@ -1,6 +1,8 @@
 const router = require('express').Router()
 const Student = require('./student_info_model')
+ObjectId = require('mongodb').ObjectID;
 //ENDPOINT IS STUDENT
+
 
 
 //get all student info 
@@ -46,11 +48,10 @@ router.put('/:id', (req, res) => {
     .catch(err => res.status(500).json(err.message))
 })
 
-
 //delete student by id 
 //working!
 router.delete('/:id', (req, res) => {
-    const id = req.params._id
+    const id = req.params.id
 
     Student.deleteOne({_id: id})
     .then(student => res.status(201).end())
