@@ -50,7 +50,7 @@ router.put('/:id', (req, res) => {
 //delete student by id 
 //working!
 router.delete('/:id', (req, res) => {
-    const id = req.params._id
+    const id = req.params.id
 
     Student.deleteOne({_id: id})
     .then(student => res.status(201).end())
