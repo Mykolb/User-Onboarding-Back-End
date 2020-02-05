@@ -1,10 +1,11 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 
 const studentInfoSchema = new Schema({
         _id: {
-        type: Number,
+        type: ObjectId, 
         seq: Number,
         unique: true,
         // default: 1
