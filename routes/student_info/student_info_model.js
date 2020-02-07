@@ -4,12 +4,7 @@ const Schema = mongoose.Schema
 
 
 const studentInfoSchema = new Schema({
-        _id: {
-        type: Number, 
-        seq: Number,
-        unique: true,
-        // default: 1
-    },
+        _id: mongoose.Schema.Types.ObjectId,
     name: {
         type: String,
         required: true,
@@ -44,6 +39,5 @@ const studentInfoSchema = new Schema({
 })
 
 const Student = mongoose.model('Student', studentInfoSchema)
-
 
 module.exports = Student

@@ -1,14 +1,20 @@
 const router = require('express').Router()
 const Student = require('./student_info_model')
+const mongoose = require('mongoose')
 //ENDPOINT IS STUDENT
-
 
 //get all student info 
 //working
 router.get('/', (req, res) => {
     Student.find()
-    .then(students => res.status(200).json(students))
-    .catch(err => res.status(404).json(err.message))
+    .then(students => {
+        if(students.length > 0) {
+            res.status(200).json(students)
+        }else {
+            res.status(404).json({ message: 'There are no students in the database.'})  
+        }
+    })
+    .catch(err => console.log(err))
 })
 
 //get student by id 
@@ -19,58 +25,60 @@ router.get('/:id', (req, res) => {
     // { _id: new ObjectId(id)
     console.log("ID IS HERE", id)
     Student.findOne({_id: id})
-    .then(student => res.status(200).json(student))
-    .catch(err => res.status(404).json(err.message))
+    .then(student => {
+        if(student) {
+            res.status(200).json(student)
+        } else {
+            res.status(404).json({message: 'The student associated with this id cannot be found.'})
+        }
+    })    
+    .catch(err => console.log(err))
 })
 
 //add a student 
 //needed create not insertOne 
 //working
 router.post('/', (req, res) => {
-    const student_info = req.body
+    // const student_info = req.body
 
-    Student.create(student_info)
-    .then(student => res.status(201).json(student))
-    .catch(err => res.status(500).json(err.message))
-})
+    const student = new Student({
+        _id: new mongoose.Types.ObjectId(),
+        name: req.body.name,
+        age: req.body.age,
+        grade: req.body.grade,
+        address: req.body.address,
+        date: req.body.date
+    })
 
-
-//put edit student info by id 
-//didn't need to pass in the id params, throws err when you do 
-router.put('/:id', (req, res) => {
-    const student_info = req.body
-    console.log(student_info)
-
-    Student.updateOne(student_info)
-    .then(student => res.status(200). json(student))
-    .catch(err => res.status(500).json(err.message))
+    Student.create(student)
+    .then(student => {
+        if(student) {
+            res.status(201).json({message: 'The student has been created succesfully.'})
+    } else {
+        res.status(500).json({message: 'There was an issue creating a student.'})
+    }
+    })
+    .catch(err => console.log(err))
 })
 
 
 //delete student by id 
 //working!
+
 router.delete('/:id', (req, res) => {
     const id = req.params.id
 
-    Student.deleteOne({_id: id})
-    .then(student => res.status(201).end())
-    .catch(err => res.status(500).json(err.message))
+     Student.remove({_id: id})
+     .exec()
+     .then(student => {
+        if(student) {
+            res.status(201).json({student, message: 'The student was successfully deleted.'})
+    } else {
+        res.status(404).json({message: 'The student associated with this id cannot be found.'})
+    }
+}) 
+.catch(err => console.log(err))
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-module.exports = router
+module.exports = router;
