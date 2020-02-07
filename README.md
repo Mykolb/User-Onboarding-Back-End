@@ -16,5 +16,5 @@ https://useronboarding-back-end.herokuapp.com
 - Heroku
 
 # Documentation
-
--link for documentation goes here-
+Please use the link below to learn more about the API. Thank you!
+https://documenter.getpostman.com/view/7274937/SWTHauju
