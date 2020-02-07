@@ -1,13 +1,13 @@
 # UserOnboarding-Back-End
 
-#Purpose
+# Purpose
 
 This API was created to connect to a previous front end React project. Initially, the previous project used json placeholder for data. I wanted to experiment using mongoDB so a simple mongoDb backend was built.
 
-#Heroku
+# Heroku
 https://useronboarding-back-end.herokuapp.com
 
-#Tech Stack 
+# Tech Stack 
 - Node.js
 - Express
 - Nodemon
@@ -15,6 +15,6 @@ https://useronboarding-back-end.herokuapp.com
 - Mongoose
 - Heroku
 
-#Documentation
+# Documentation
 
 -link for documentation goes here-
